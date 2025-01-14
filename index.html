@@ -34,6 +34,7 @@
       max-width: 450px;
       text-align: center;
       overflow: hidden;
+      height: 90%;
     }
 
     h1 {
@@ -41,6 +42,13 @@
       color: white;
       margin-bottom: 20px;
       font-family: 'Comic Sans MS', cursive, sans-serif;
+    }
+
+    .quiz-container {
+      max-height: 60vh;
+      overflow-y: auto;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
     }
 
     .question {
@@ -81,7 +89,7 @@
     }
 
     .user-input:focus {
-      color: #690844;
+      color: #650440;
       border-color: #ff6ec7;
       background-color: rgba(255, 255, 255, 0.2);
     }
@@ -111,13 +119,13 @@
       font-size: 1.5em;
       margin-top: 30px;
       transition: opacity 0.5s ease;
-      color: #333;
+      color: #660b0b;
     }
 
     .percentage {
       font-size: 2.5em;
       font-weight: bold;
-      color: #240762;
+      color: #10056c;
     }
 
     .emoji {
@@ -190,37 +198,40 @@
   <div class="container">
     <h1>How Pookie Are You? 😜</h1>
     <form id="quizForm">
-      <div class="question">
-        <p>What is your favorite color? 🎨</p>
-        <label><input type="radio" name="q1" value="1"> Red ❤️</label>
-        <label><input type="radio" name="q1" value="2"> Blue 💙</label>
-        <label><input type="radio" name="q1" value="3"> Green 💚</label>
+      <div class="quiz-container">
+        <div class="question">
+          <p>What is your favorite color? 🎨</p>
+          <label><input type="radio" name="q1" value="1"> Red ❤️</label>
+          <label><input type="radio" name="q1" value="2"> Blue 💙</label>
+          <label><input type="radio" name="q1" value="3"> Green 💚</label>
+        </div>
+        <div class="question">
+          <p>How often do you eat sweets? 🍬</p>
+          <label><input type="radio" name="q2" value="1"> Rarely 😅</label>
+          <label><input type="radio" name="q2" value="2"> Sometimes 🍩</label>
+          <label><input type="radio" name="q2" value="3"> All the time 🍫</label>
+        </div>
+        <div class="question">
+          <p>What's your favorite activity? 🏃‍♂️</p>
+          <label><input type="radio" name="q3" value="1"> Reading 📖</label>
+          <label><input type="radio" name="q3" value="2"> Sports ⚽</label>
+          <label><input type="radio" name="q3" value="3"> Sleeping 🛏️</label>
+        </div>
+        <div class="question">
+          <p>Do you Yapp? 🗣️</p>
+          <label><input type="radio" name="q4" value="1"> Yes, I can't stop talking 😜</label>
+          <label><input type="radio" name="q4" value="2"> Sometimes 🤔</label>
+          <label><input type="radio" name="q4" value="3"> Nah, I'm quiet 🤫</label>
+        </div>
+        <div class="question">
+          <p>Enter three words that describe you: 📝</p>
+          <input type="text" id="userInput" class="user-input" placeholder="e.g. Fun, Adventurous, Creative" maxlength="50" />
+        </div>
+        <div class="button-container">
+          <button type="submit" id="submitBtn">Submit 🚀</button>
+        </div>
       </div>
-      <div class="question">
-        <p>How often do you eat sweets? 🍬</p>
-        <label><input type="radio" name="q2" value="1"> Rarely 😅</label>
-        <label><input type="radio" name="q2" value="2"> Sometimes 🍩</label>
-        <label><input type="radio" name="q2" value="3"> All the time 🍫</label>
-      </div>
-      <div class="question">
-        <p>What's your favorite activity? 🏃‍♂️</p>
-        <label><input type="radio" name="q3" value="1"> Reading 📖</label>
-        <label><input type="radio" name="q3" value="2"> Sports ⚽</label>
-        <label><input type="radio" name="q3" value="3"> Sleeping 🛏️</label>
-      </div>
-      <div class="question">
-        <p>Do you Yapp? 🗣️</p>
-        <label><input type="radio" name="q4" value="1"> Yes, I can't stop talking 😜</label>
-        <label><input type="radio" name="q4" value="2"> Sometimes 🤔</label>
-        <label><input type="radio" name="q4" value="3"> Nah, I'm quiet 🤫</label>
-      </div>
-      <div class="question">
-        <p>Enter three words that describe you: 📝</p>
-        <input type="text" id="userInput" class="user-input" placeholder="e.g. Fun, Adventurous, Creative" maxlength="50" />
-      </div>
-      <div class="button-container">
-        <button type="submit" id="submitBtn">Submit 🚀</button>
-      </div>
+      
     </form>
     <div id="result" class="result">
       <h2>Your Pookie Rating 🤩</h2>
