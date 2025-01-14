@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How Pookie Are You?</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #F8F8F8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: #333;
+    }
+
+    .container {
+      background: linear-gradient(45deg, #ff6ec7, #ff9a8b);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 450px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3em;
+      color: white;
+      margin-bottom: 20px;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+    }
+
+    .question {
+      margin-bottom: 20px;
+      font-size: 1.3em;
+      color: #fff;
+      text-align: left;
+    }
+
+    label {
+      margin-bottom: 10px;
+      cursor: pointer;
+      font-size: 1.1em;
+      display: block;
+      transition: background 0.3s;
+      padding: 5px;
+      border-radius: 10px;
+    }
+
+    label:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .question input[type="radio"] {
+      margin-right: 10px;
+    }
+
+    .user-input {
+      width: 100%;
+      padding: 10px;
+      font-size: 1.1em;
+      border: 2px solid #fff;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      margin-bottom: 20px;
+      transition: color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .user-input:focus {
+      color: #ff6ec7;
+      border-color: #ff6ec7;
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .button-container {
+      margin-top: 30px;
+      position: relative;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 30px;
+      font-size: 1.3em;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .result {
+      display: none;
+      font-size: 1.5em;
+      margin-top: 30px;
+      transition: opacity 0.5s ease;
+      color: #333;
+    }
+
+    .percentage {
+      font-size: 2.5em;
+      font-weight: bold;
+      color: #ff6ec7;
+    }
+
+    .emoji {
+      font-size: 2.5em;
+      margin-top: 10px;
+    }
+
+    .social-buttons {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .social-buttons a {
+      text-decoration: none;
+      font-size: 1.5em;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 10px;
+      background-color: #333;
+      transition: background-color 0.3s;
+    }
+
+    .social-buttons a:hover {
+      background-color: #444;
+    }
+
+    .social-buttons .twitter {
+      background-color: #1DA1F2;
+    }
+
+    .social-buttons .instagram {
+      background-color: #C13584;
+    }
+
+    .download-button {
+      margin-top: 20px;
+      background-color: #007BFF;
+      color: white;
+      padding: 12px 20px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .download-button:hover {
+      background-color: #0056b3;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 2.5em;
+      }
+
+      button {
+        font-size: 1.2em;
+        padding: 12px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>How Pookie Are You? 😜</h1>
+    <form id="quizForm">
+      <div class="question">
+        <p>What is your favorite color? 🎨</p>
+        <label><input type="radio" name="q1" value="1"> Red ❤️</label>
+        <label><input type="radio" name="q1" value="2"> Blue 💙</label>
+        <label><input type="radio" name="q1" value="3"> Green 💚</label>
+      </div>
+      <div class="question">
+        <p>How often do you eat sweets? 🍬</p>
+        <label><input type="radio" name="q2" value="1"> Rarely 😅</label>
+        <label><input type="radio" name="q2" value="2"> Sometimes 🍩</label>
+        <label><input type="radio" name="q2" value="3"> All the time 🍫</label>
+      </div>
+      <div class="question">
+        <p>What's your favorite activity? 🏃‍♂️</p>
+        <label><input type="radio" name="q3" value="1"> Reading 📖</label>
+        <label><input type="radio" name="q3" value="2"> Sports ⚽</label>
+        <label><input type="radio" name="q3" value="3"> Sleeping 🛏️</label>
+      </div>
+      <div class="question">
+        <p>Do you Yapp? 🗣️</p>
+        <label><input type="radio" name="q4" value="1"> Yes, I can't stop talking 😜</label>
+        <label><input type="radio" name="q4" value="2"> Sometimes 🤔</label>
+        <label><input type="radio" name="q4" value="3"> Nah, I'm quiet 🤫</label>
+      </div>
+      <div class="question">
+        <p>Enter three words that describe you: 📝</p>
+        <input type="text" id="userInput" class="user-input" placeholder="e.g. Fun, Adventurous, Creative" maxlength="50" />
+      </div>
+      <div class="button-container">
+        <button type="submit" id="submitBtn">Submit 🚀</button>
+      </div>
+    </form>
+    <div id="result" class="result">
+      <h2>Your Pookie Rating 🤩</h2>
+      <p class="percentage" id="rating">Calculating...</p>
+      <p class="emoji" id="emojiRating">🤔</p>
+      <div class="social-buttons">
+        <a href="#" id="twitterShare" class="twitter" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="#" id="instagramShare" class="instagram" target="_blank">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+      <button class="download-button" id="downloadBtn">Download as Image 📸</button>
+    </div>
+  </div>
+  <script>
+    document.getElementById('quizForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      let score = 0;
+      const questions = ['q1', 'q2', 'q3', 'q4'];
+
+      questions.forEach(question => {
+        const selectedOption = document.querySelector(`input[name="${question}"]:checked`);
+        if (selectedOption) {
+          score += parseInt(selectedOption.value);
+        }
+      });
+
+      const userInput = document.getElementById('userInput').value.trim();
+      if (userInput.split(' ').length === 3) {
+        score += 3;
+      }
+
+      let percentage = (score / 15) * 100;
+
+      let emoji = '';
+      if (percentage >= 80) {
+        emoji = '🥳';
+      } else if (percentage >= 50) {
+        emoji = '😊';
+      } else {
+        emoji = '😅';
+      }
+
+      document.querySelector("form").style.display = "none";
+      document.getElementById('result').style.display = 'block';
+      document.getElementById('rating').innerText = `You are ${Math.round(percentage)}% Pookie!`;
+      document.getElementById('emojiRating').innerText = emoji;
+
+      const tweetText = `I'm ${Math.round(percentage)}% Pookie! Find out how pookie you are at #PookieQuiz`;
+      const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`;
+      const instagramUrl = `https://www.instagram.com/?url=${encodeURIComponent(window.location.href)}`;
+
+      document.getElementById('twitterShare').href = twitterUrl;
+      document.getElementById('instagramShare').href = instagramUrl;
+
+      document.getElementById('downloadBtn').addEventListener('click', function() {
+        html2canvas(document.getElementById('result')).then(function(canvas) {
+          const link = document.createElement('a');
+          link.href = canvas.toDataURL();
+          link.download = 'pookie_result.png';
+          link.click();
+        });
+      });
+    });
+  </script>
+</body>
+</html>
